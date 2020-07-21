@@ -41,59 +41,130 @@ const slider = () => {
 
 fontChange = size => document.documentElement.style.fontSize = size;
 
-// ウィンドウリサイズ時の自動表示調整
+// 
 const widthJS = () => {
   const slider = document.getElementById('rangeSlider');
   let width = document.body.clientWidth;
   let height = document.body.clientHeight;
 
-  if ( 780 >= width && width > 480 && height > 643) {
-    slider.setAttribute('value', '6');
+  if ( 420 > height ) {
+    slider.setAttribute('value', '0');
     fontChange(`${12+ slider.value * 2}px`);
   }
-  else if ( 1023 >= width && width > 780 && 803 > height && height > 728 ) {
+  else if ( 450 > height ) {
+    slider.setAttribute('value', '1.3');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
+  else if ( 480 > height ) {
+    slider.setAttribute('value', '1.3');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
+  else if ( 500 > height ) {
+    slider.setAttribute('value', '2');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
+  else if ( 530 > height ) {
+    slider.setAttribute('value', '2.5');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
+  else if ( 580 > height ) {
+    slider.setAttribute('value', '3');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
+  else if ( 600 > height ) {
+    slider.setAttribute('value', '4');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
+  else if ( 650 > height ) {
+    slider.setAttribute('value', '4.9');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
+  else if ( width < 540 && height > 700 ) { // 横の制限
+    slider.setAttribute('value', '6.8');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
+  else if ( 700 > height ) {
+    slider.setAttribute('value', '5.5');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
+  else if ( 750 > height ) {
+    slider.setAttribute('value', '6.8');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
+  else if ( 800 > height ) {
     slider.setAttribute('value', '8');
     fontChange(`${12+ slider.value * 2}px`);
   }
-  else if ( width > 1023 && 803 > height && 803 > height ) {
-    slider.setAttribute('value', '9');
-    fontChange(`${12+ slider.value * 2}px`);
-  }
-  else if ( width > 1023 && height > 803 ) {
+  else {
     slider.setAttribute('value', '10');
-    fontChange(`${12+ slider.value * 2}px`);
-  }
-  else if ( height < 540 ) {
-    slider.setAttribute('value', '3');
     fontChange(`${12+ slider.value * 2}px`);
   }
 }
 
+
+// ウィンドウリサイズ時の自動表示調整
 const forResize = () => {
   const slider = document.getElementById('rangeSlider');
   let width = document.body.clientWidth;
   let height = document.body.clientHeight;
+
   window.addEventListener("resize", () => {
     width = document.body.clientWidth;
-    if ( 780 > width && width > 480 && height > 643) {
-      slider.setAttribute('value', '6');
+    height = document.body.clientHeight;
+    if ( 420 > height ) {
+      slider.setAttribute('value', '0');
       fontChange(`${12+ slider.value * 2}px`);
     }
-    else if ( 1023 >= width && width > 780 && 803 > height && height > 728 ) {
+    else if ( 450 > height ) {
+      slider.setAttribute('value', '1.3');
+      fontChange(`${12+ slider.value * 2}px`);
+    }
+    else if ( 480 > height ) {
+      slider.setAttribute('value', '1.3');
+      fontChange(`${12+ slider.value * 2}px`);
+    }
+    else if ( 500 > height ) {
+      slider.setAttribute('value', '2');
+      fontChange(`${12+ slider.value * 2}px`);
+    }
+    else if ( 530 > height ) {
+      slider.setAttribute('value', '2.5');
+      fontChange(`${12+ slider.value * 2}px`);
+    }
+    else if ( 580 > height ) {
+      slider.setAttribute('value', '3');
+      fontChange(`${12+ slider.value * 2}px`);
+    }
+    else if ( 600 > height ) {
+      slider.setAttribute('value', '4');
+      fontChange(`${12+ slider.value * 2}px`);
+    }
+    else if ( 650 > height ) {
+      slider.setAttribute('value', '4.9');
+      fontChange(`${12+ slider.value * 2}px`);
+    }
+    else if ( width < 540 && height > 700 ) { // 横の制限
+      slider.setAttribute('value', '6.8');
+      fontChange(`${12+ slider.value * 2}px`);
+    }
+    else if ( 700 > height ) {
+      slider.setAttribute('value', '5.5');
+      fontChange(`${12+ slider.value * 2}px`);
+    }
+    else if ( 750 > height ) {
+      slider.setAttribute('value', '6.8');
+      fontChange(`${12+ slider.value * 2}px`);
+    }
+    else if ( 800 > height ) {
       slider.setAttribute('value', '8');
       fontChange(`${12+ slider.value * 2}px`);
     }
-    // 後ほど縦の条件を追加していく
-    else if ( width > 1023 && 803 > height && height > 728 ) {
-      slider.setAttribute('value', '9');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( width > 1023 && height > 803 ) {
+    else if ( 850 > height ) {
       slider.setAttribute('value', '10');
       fontChange(`${12+ slider.value * 2}px`);
     }
-    else if ( height < 540 ) {
-      slider.setAttribute('value', '3');
+    else {
+      slider.setAttribute('value', '10');
       fontChange(`${12+ slider.value * 2}px`);
     }
   })

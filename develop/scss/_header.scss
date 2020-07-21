@@ -38,7 +38,7 @@ header {
       @include sp {
         position: absolute;
         top: 50px;
-        left: 20px;
+        left: 30px;
         }
       // タブレット以上
       @include tb {
@@ -75,7 +75,7 @@ header {
       text-align: right;
       // スマホ
       @include sp {
-        font-size: 24px; //(固定する)
+        font-size: 26px; //(固定する)
       }
       // タブレット以上
       @include tb {
