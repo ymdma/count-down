@@ -1,4 +1,4 @@
-// import {Animation} from"./Animation"
+
 
 document.addEventListener('DOMContentLoaded', () => {
   setNumbers();
@@ -30,10 +30,8 @@ const slider = () => {
   const target = document.getElementById('sliderValue');
   const rangeValue = (elem, target) => {
     return function(evt) {
-      // target.innerHTML = elem.value;
       fontChange(`${12+ elem.value * 2}px`);
-      // console.log(`${12+ elem.value * 2}px`)
-      console.log(elem.value)
+      // console.log(elem.value) // 表示の確認用
     }
   }
   elem.addEventListener('input', rangeValue(elem, target));
@@ -41,7 +39,8 @@ const slider = () => {
 
 fontChange = size => document.documentElement.style.fontSize = size;
 
-// 
+// リロード時の表示調整
+                  // 処理=>遅い コード=>汚い 記述が非効率的 なので改善する
 const widthJS = () => {
   const slider = document.getElementById('rangeSlider');
   let width = document.body.clientWidth;
@@ -102,7 +101,7 @@ const widthJS = () => {
 }
 
 
-// ウィンドウリサイズ時の自動表示調整
+// ウィンドウリサイズ時の表示サイズ調整
 const forResize = () => {
   const slider = document.getElementById('rangeSlider');
   let width = document.body.clientWidth;
