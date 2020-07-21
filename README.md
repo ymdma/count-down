@@ -1,14 +1,19 @@
   # CountDown
 
-<div align="center">
-  <img src="" width="50%">
-</div>
-
   ## CountDownとは
 
 1から25までの数字を順番にクリックorタップして消していき、早いタイムを目指すゲームです。<br>
 
+<br>
+<br>
 
+<!-- <div align="center">
+  <img src="./develop/images/RM_mv.png" width="45%">
+</div> -->
+<div align="center">
+  <img src="./develop/images/RM_move.gif" width="50%">
+
+<br>
 
 <br>
 
@@ -21,13 +26,13 @@
 :computer: Mac GoogleChrome(ver: 最新) <br>
 
   ### 動作確認環境: <br>
-:computer: Mac GoogleChrome,safari,firefox <br>
+:computer: Mac GoogleChrome,Safari,Firefox <br>
 :iphone: iPhone8 iOS 13 GoogleChrome,safari,firefox
 (画面サイズ: iPhone6/7/8~)<br>
 <br>
 ＊スマホでは縦（ポートレート）推奨。
 <br>
-
+</div>
 
 <br>
 
@@ -52,13 +57,14 @@
   ある時ふと思い出し、「今ならアレを作る事ができるな。」と思った事ががきっかけでした。<br>
 
   また、時間経過の概念のある何かを作ってみたいと思っていた、という理由もありました。<br>
-
-
 <br>
 <br>
 
+***
+<br>
 
-  # ゲームの流れ
+
+  ## ゲームの流れ
 
 <br>
 
@@ -114,7 +120,7 @@
 
   - PCで遊ぶ場合<br>
   ゲームフィールド及び、上部の得点と時間のカウンターが拡大・縮小されます。(なおこの際、カウンター部の文字とゲームフィールドでは伸縮の幅を変えて設定してありますので、文字が小さくなり過ぎることはありません。)<br>
-  
+
 - スマホ（縦）で遊ぶ場合<br>
   ゲームフィールドの大きさは変わらず、画面全体に対するゲームフィールドの上下位置を微調整する事ができます。<br>
 
@@ -122,15 +128,18 @@
       つまり、指の長さによって操作しやすい範囲が人それぞれ違うので、調整できるようにしたかったのです。
 <br>
 
-以上のように、表示調整用のスライドバーは、~~「アプリが人に優しくなる事で、人に愛されるアプリになって欲しい！」という気持ちで実装しました。~~ 過去の体験から、それぞれの使い易さを実現できるよう実装しました。
-<br>
-<br>
+以上のように、表示調整用のスライドバーは、~~「アプリが人に優しくなる事で、人に愛されるアプリになって欲しい！」という気持ちで実装しました。~~ 過去の体験から、それぞれの使い易さを実現できるよう実装しました。<br>
 <br>
 
-  ### メンテナンス性を高める書き方を工夫した<br>
-メンテナンスやデバッグ、拡張しやすいようにコードを書くことができた点は自分なりに頭を働かせた部分です。
+***
+
+<br>
+
+  ### メンテナンス性を高める書き方を意識した<br>
+メンテナンスやデバッグ、拡張などをしやすいようにコードを書くよう、自分なりに頭を働かせました。
 <br>
 <br>
+実際のコードをいくつか例に挙げてみます。
 
 ```JavaScript:&nbsp;script.js
 
@@ -145,9 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- ここに画像 -->
 <div align="center">
   <img src="./develop/images/RM_pre.png" width="30%"> <img src="./develop/images/RM_play.png" width="30%"> <img src="./develop/images/RM_post.png" width="30%">
+  <div>左から、 'pre'時の画面、'play'時の画面、'post'時の画面</div>
 </div>
-▲この中央の四角いエリアが切り替わります。<br>
-（反省点としては、四角いエリアに枠を作り、中身を切り替える方式にした方がCSSを削減できました）
+
+&nbsp; &nbsp; &nbsp; ▲ &nbsp; この中央の四角いエリアが切り替わります。<br>
 
 
 ```JavaScript:&nbsp;script.js
@@ -155,26 +165,25 @@ document.addEventListener('DOMContentLoaded', () => {
 let conditionToGameClear = 0; // (25 - num)番の要素をクリックしたらゲームクリア
 
 let Game = { point: 0 };
-
 ```
-- `conditionToGameClear` => ゲームの終了条件を操作できます。引数に0〜23の数字を渡すことにより、好きな数でゲームを終える事ができます。<br>
+- `conditionToGameClear` <br>
+  ゲームの終了条件を操作できます。引数に0〜23の数字を渡すことにより、好きな数でゲームを終える事ができます。<br>
 
   例）<br>
   ・デバッグしたい： &nbsp;23&nbsp; に設定。<br>
     => １枚消すだけでゲームを終える事ができます。<br>
-  
+
   ・数字を16個にしたい： &nbsp;9&nbsp; に設定。<br>
     => Pag,Sassを使っているのもあり、数分で使用変更が可能です。
-- `Game`： 得点の初期値を設定する事ができます。<br>
-    => 'pre'画面で出てくるメッセージは正答率に合わせて変化します。例えばこの機能をテストする際は、このように指定します。
-    
-    `conditionToGameClear = 23`
-    `Game = { point:960 } // フルスコア時のシュミレート `
+- `Game`<br>
+  得点の初期値を設定する事ができます。<br>
+    => 'pre'画面で出てくるメッセージは正答率に合わせて変化します。例えば、この機能をテストする際にはこのように指定します。
 
+    ```
+    conditionToGameClear = 23
+    Game = { point:960 } // フルスコア時のシュミレート
+    ```
 
-
-<br>
-(全体の量に対して、グローバルな変数が多めかもしれませんが、このゲームに関しては巨大になり得ないので、問題ないかと考えました。)
 <br>
 
 ***
