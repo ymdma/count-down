@@ -1,0 +1,58 @@
+html(lang="ja")
+  head
+    include /_include/_head.pug
+  body
+  .page-wrap
+    header
+      .upper-displays
+        input(id="rangeSlider" type="range" min="0" max="10" step="0.1" value="2" title="表示調整用スライダー")
+        //- span#sliderValue 1
+        //- div.buttons
+        //-   button#rfs16.c-button 16
+        //-   button#rfs20.c-button 20
+        //-   button#rfs24.c-button 24
+        .displays
+          p#gamePoint.point-display(title="特典")
+            | 0
+          p#timer.timer-display(title="経過時間")
+            | 00:00
+    .main
+      //- #startModal.start-modal
+      //-   button#startBtn.c-button.start-modal__btn START
+      #gameField.l-game-field(state="pre").
+        <button id="cell_1"  class="cell"></button>
+        <button id="cell_2"  class="cell"></button>
+        <button id="cell_3"  class="cell"></button>
+        <button id="cell_4"  class="cell"></button>
+        <button id="cell_5"  class="cell"></button>
+        <button id="cell_6"  class="cell"></button>
+        <button id="cell_7"  class="cell"></button>
+        <button id="cell_8"  class="cell"></button>
+        <button id="cell_9"  class="cell"></button>
+        <button id="cell_10" class="cell"></button>
+        <button id="cell_11" class="cell"></button>
+        <button id="cell_12" class="cell"></button>
+        <button id="cell_13" class="cell"></button>
+        <button id="cell_14" class="cell"></button>
+        <button id="cell_15" class="cell"></button>
+        <button id="cell_16" class="cell"></button>
+        <button id="cell_17" class="cell"></button>
+        <button id="cell_18" class="cell"></button>
+        <button id="cell_19" class="cell"></button>
+        <button id="cell_20" class="cell"></button>
+        <button id="cell_21" class="cell"></button>
+        <button id="cell_22" class="cell"></button>
+        <button id="cell_23" class="cell"></button>
+        <button id="cell_24" class="cell"></button>
+        <button id="cell_25" class="cell"></button>
+      //- button#cell_1.cell
+      //- ここをループで書く
+
+      .modal(state="pre")
+        #startModal.start-modal(state="pre")
+          button#startBtn.c-button.start-modal__btn START
+        .post__wrap(state="pre")
+          #endComment.comment
+            p
+            p 終了
+          button#resetBtn.c-button.reset-btn(disabled) RETRY!

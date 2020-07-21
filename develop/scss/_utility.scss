@@ -1,0 +1,122 @@
+// // Utility // //
+
+.is-active{
+  display: block !important;
+}
+.is-hidden{
+  display: none !important;
+}
+
+// // flexBoxSet
+
+// space-between
+@mixin flex--jc-sb {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+// center
+@mixin flex--center(
+  $text: center,
+  $jc: center
+){
+  display: flex;
+  flex-direction: column;
+  justify-content: $jc;
+  align-items: center;
+  text-align: $text;
+}
+
+@mixin flex--cd(
+  $text: center,
+  $jc: center
+){
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: $jc;
+  align-items: center;
+  text-align: $text;
+}
+
+// border-radius [borderより上に配置]
+@mixin border-radius(
+  $radius: 2px
+){
+  border-radius: $radius;
+}
+
+
+// // borderSet
+
+// border__なしの場合
+@mixin no-border {
+  border: none;
+  box-shadow: 1 1 3px 1px $baseBlackColor;
+  @include border-radius();
+}
+// border__ありの場合
+@mixin with-border (
+  $type: solid,
+  $color: $baseBlackColor,
+  $width: 2px
+){
+  border: $type $color $width;
+  box-shadow: 1 1 3px 1px $baseBlackColor;
+  @include border-radius();
+}
+
+// // TEXT
+
+// MAIN-SET
+@mixin mainText (
+  $color: $baseBlackColor,
+  $size: $medium,
+  $line-height: $medium,
+  $weight: 400,
+  $letter-spacing: 1px
+){
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+@mixin strongText (
+  $color: $baseBlackColor,
+  $size: $large,
+  $line-height: $large,
+  $weight: 600
+){
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  letter-spacing: 0.9px;
+}
+
+// FONT-SIZE
+$large: 40px;
+$medium: 16px;
+$small: 12px;
+
+// FONT-FAMILY
+//のちほど
+
+
+
+// p[role="title"]
+@mixin role-title(
+  $shadow: none
+) {
+  width: fit-content;
+  height: 40px;
+
+  // margin: 0 0 40px 0;
+  @include strongText(
+    $color: #000,
+    $size: $large - 3px,
+    $line-height: $large - 3px
+    );
+    text-shadow:$shadow;
+}
+

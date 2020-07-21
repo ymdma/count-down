@@ -1,0 +1,35 @@
+// 変数の宣言--色
+$baseWhiteColor: #fafafa;
+$baseBlackColor: #333333;
+$baseGrayColor: #777777;
+$baseBlueColor: #5e9bc1;
+$basePinkColor: #ffc0cb;
+$baseGreenColor: #08794a;
+$gameTableColor: #08794a;
+$baseYellowColor: #f3efc4;
+
+
+$baseScreenColor: #3a3a36;
+
+
+
+// 変数 ウィンドウ幅
+$sp: 480px;
+$tb: 768px;
+$pc: 1280px;
+
+$baseFontSize: 16;
+$rootFontSize: percentage( $baseFontSize / 16 );
+
+// スマホ
+@mixin sp {
+  @media (max-width: $sp) {
+    @content;
+  }
+}
+// タブレット
+@mixin tb {
+  @media (min-width: $sp + 1px) {
+    @content;
+  }
+}

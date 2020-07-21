@@ -1,0 +1,259 @@
+
+.page-wrap {
+  width: 100%;
+  background: $baseScreenColor;
+
+  // スマホ
+  @include sp {
+    height: 100vh;
+    display: flex;
+    flex-direction: column; //保険
+    align-items: center; //保険
+    // justify-content: center;
+  }
+  // タブレット
+  @include tb {
+    @include flex--center();
+    height: 100vh;
+  }
+}
+
+
+
+.main {
+  width: inherit;
+  height: inherit;
+
+    // スマホ
+    @include sp {
+      display: flex;
+      align-items: center;
+      // padding: 3.5em 0 0;
+
+    }
+    // タブレット以上
+    @include tb {
+      padding: 110px 0 0;
+
+    }
+}
+
+
+.modal {
+  @include flex--center();
+  padding: 0;
+  outline: solid 1px;
+  background: rgb(145, 138, 138);
+  text-align: center;
+  cursor: default;
+
+  // スマホ
+  @include sp {
+    width: 100vw;
+    height: 100vw;
+    margin: 5rem 0 0 0; // 上下に動くように
+    // margin: 150px 0 0 0;
+    border-radius: 3.5px;
+    }
+  // タブレット以上
+  @include tb {
+    width: 20rem;
+    height: 20rem;
+    margin: 50px auto;
+    border-radius: 0.2rem;
+  }
+
+  &[state="pre"] {
+    // display: none;
+  }
+  &[state="play"] {
+    display: none;
+  }
+  &[state="post"] {
+    // display: none;
+  }
+
+
+  // *****スタート*****
+
+  .start-modal {
+    background: transparent;
+    text-align: center;
+
+    &[state="play"] {
+      display: none;
+    }
+    &[state="post"] {
+      display: none;
+    }
+
+    // &__btn {
+      // }
+      // &:hover{
+        // animation-name: StartBtn;
+        // animation-duration: .7s;
+        // animation-iteration-count: 1;
+        // animation-fill-mode: forwards;
+      // }
+    // }
+  }
+
+
+  // *****終了後*****
+  .post__wrap {
+    @include flex--center;
+    height: fit-content;
+    width: fit-content;
+
+    &[state="pre"] {
+      display: none;
+    }
+    &[state="play"] {
+      display: none;
+    }
+
+    .comment {
+      @include flex--center;
+      height: fit-content;
+      width: fit-content;
+      word-break: break-all;
+
+      // スマホ
+      @include sp {
+        margin: 0 0 20px 0;
+        @include ppY(24);
+      }
+      // タブレット以上
+      @include tb {
+        margin: 0 0 2rem 0;
+        p + p {
+          margin-top: 1.5rem;
+        }
+      }
+      p:nth-of-type(1) {
+        position: relative;
+        margin: 0 auto;
+        top: 0;
+        background: rgb(213, 210, 208);
+        border: double #3e2507 3px;
+        text-align: left;
+        // スマホ
+        @include sp {
+          padding: 16px 32px;
+          border-radius: 8px;
+          font-size: 20px;
+          line-height: 26px;
+        }
+        // タブレット以上
+        @include tb {
+          padding: 1rem 2rem;
+          border-radius: 0.5rem;
+          font-size: text(20);
+        }
+      }
+      p:nth-of-type(2) {
+        text-align: center;
+
+        // スマホ
+        @include sp {
+          font-size: 22px;
+        }
+        // タブレット以上
+        @include tb {
+          font-size: text(22);
+        }
+      }
+    }
+    .reset-btn {
+      background:#e7e9eb;
+      border: solid  #E67928 3px;
+      &:hover {
+        background:#E67928;
+        border: solid #f5ede4 3px;
+      }
+      // スマホ
+      @include sp {
+        font-size: 24px;
+        // @include text(24);
+      }
+      // タブレット以上
+      @include tb {
+        // font-size: 24px;
+        @include text(24);
+      }
+    }
+  }
+
+} // modal
+
+
+
+// メインエリア
+
+.l-game-field {
+  @include flex--cd();
+  width: 20rem;
+  height: 20rem;
+  padding: 0;
+  outline: solid 1px;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+
+  // スマホ
+  @include sp {
+    width: 100vw;
+    height: 100vw;
+    margin: 5rem 0 0 0; // ここを機種ごとに細かく区切りたい。テストできれば...！（5remでiphone8ピッタリ）
+  }
+  // タブレット
+  @include tb {
+    margin: 50px auto;
+    font-size: 20px;
+  }
+
+  &[state="pre"] {
+    display: none;
+  }
+  &[state="post"] {
+    display: none;
+  }
+
+  .cell {
+    width: 4rem;
+    height: 4rem;
+    margin: 0;
+    padding: 1px;
+    background: #ffffff;
+    @include with-border(
+      $width: 2px
+      );
+    // font-size: 1em;
+    font-weight:600;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+
+    // スマホ
+    @include sp {
+      width: calc(100vw / 5);
+      height: calc(100vw / 5);
+      font-size: 22px;
+    }
+    @include tb {
+      font-size: 1.375rem;
+    }
+
+    &:hover {
+      background:#ffd45e;
+    }
+    text-align: center;
+    &:active {
+      background:#ffcf49;
+    }
+    &[disabled="true"]{
+      color:transparent;
+      background: #777575;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+
+
+.c-button {
+  width: fit-content;
+  height: fit-content;
+  background:#e7e9eb;
+  // border: solid #ea8d1d 3px;
+  border: solid #223377 3px;
+
+  box-shadow: 1px 3px 5px 0.5px #777;
+  letter-spacing: 1.2px;
+  text-align: center;
+  cursor: pointer;
+  transition: border .3s, background-color .3s, box-shadow .3s;
+  [disabled="true"] {
+    // background:#fafafa;
+    background:transparent;
+    color: transparent;
+  }
+  // スマホ
+  @include sp {
+    padding: 16px 24px;
+    border-radius: 5px;
+    font-size: 24px;
+    line-height: 24px;
+    // @include text(24);
+  }
+  // タブレット以上
+  @include tb {
+    padding: 1rem 1.5rem;
+    border-radius: 0.3rem;
+    // font-size: 24px;
+    @include text(24);
+  }
+  &:hover {
+    background: #4A6EFF;
+    border: solid #4A6EFF 3px;
+    box-shadow: none;
+    // background: #ffba66;;
+
+  }
+}
