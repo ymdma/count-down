@@ -1,14 +1,6 @@
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  setNumbers();
-  clickStartBtn();
-  slider();
-  widthJS();
-  forResize();
-  // changeState("pre"); // デバッグ用
-  // endCommentSelect('800'); // デバッグ用
-});
+// *******************
+// **** Variables ****
+// *******************
 
 const data = [1,2,3,4,5,6,7,8,9,10,
               11,12,13,14,15,16,17,18,19,20,
@@ -24,6 +16,30 @@ let ms = 0;
 let sec = 0;
 let stopWatch;
 
+// *******************
+// **** Functions ****
+// *******************
+
+document.addEventListener('DOMContentLoaded', () => {
+  setNumbers();
+  clickStartBtn();
+  slider();
+  widthJS();
+  forResize();
+  // changeState("pre"); // デバッグ用
+  // endCommentSelect('800'); // デバッグ用
+});
+
+
+const isDisabled = (target) => {
+  target.setAttribute('disabled', true);
+};
+
+const removeDisabled = (target) => {
+  target.removeAttribute('disabled');
+};
+
+
 // 表示調整用スライダー
 const slider = () => {
   const elem = document.getElementById('rangeSlider');
@@ -35,7 +51,7 @@ const slider = () => {
     }
   }
   elem.addEventListener('input', rangeValue(elem, target));
-}
+};
 
 fontChange = size => document.documentElement.style.fontSize = size;
 
@@ -98,7 +114,7 @@ const widthJS = () => {
     slider.setAttribute('value', '10');
     fontChange(`${12+ slider.value * 2}px`);
   }
-}
+};
 
 
 // ウィンドウリサイズ時の表示サイズ調整
@@ -167,13 +183,8 @@ const forResize = () => {
       fontChange(`${12+ slider.value * 2}px`);
     }
   })
-}
-
-
-
-const isDisabled = (target) => {
-  target.setAttribute('disabled', true);
 };
+
 
 const randomize = () => {
   numbers = data.concat();
@@ -184,16 +195,16 @@ const randomize = () => {
     numbers[i] = numbers[j];
     numbers[j] = tmp;
   }
-}
+};
 
 
 // ほぼデバッグ用
 let state = "pre"
 
-// 今回はメンテナンス性を考えてこの方法で切り替え
+// 今回はメンテナンス性を考えてこの方法で切り替えを実装
 // state属性の切り替え => changeState('play')
 const changeState = (str) => {
-  const // 入れ替え要素リスト
+  const // （入れ替え要素リスト）
         modal = document.querySelector('.modal'),
         startModal = document.getElementById('startModal'),
         gameField = document.getElementById('gameField'),
@@ -229,23 +240,23 @@ const changeState = (str) => {
 
 
 // ポイントの計算量
-let amountToAdd = 40; // 加点量
-let amountToDeduct = -40// 減点量
-// 満点の設定
-let fullScore = amountToAdd * 25; // 1000
+let amountToAdd    =  40;  // 加点量
+let amountToDeduct = -40;  // 減点量
 
-//
+let fullScore = amountToAdd * 25; // // 満点の設定:1000
+
+//  ポイントの足し引き
 //  calcPoint() >> 引数: amountToAdd or amountToDeduct
 const calcPoint = ( amount) => {
     Game.point += amount
     pointDisplayUpdate();
-}
+};
 
 // 点数表示の更新
 const pointDisplayUpdate = () => {
   const gamePoint = document.getElementById('gamePoint');
   gamePoint.innerHTML = Game.point;
-}
+};
 
 // 点数を評価してメッセージを出す
 const endCommentSelect = (gameScore) => {
@@ -263,7 +274,7 @@ const endCommentSelect = (gameScore) => {
     step4UpMessage = '才能がないかもしれない！',
     elseMessage    = '速さよりミスを無くそう';
 
-    // score() >> 設定スコアの計算/ 引数: ミスした回数
+  // score() >> 設定スコアの計算/ 引数: ミスした回数
   function score(miss) {
     return fullScore + amountToDeduct * miss };
 
@@ -334,7 +345,7 @@ const clickStartBtn = () => {
   startBtn.addEventListener('click', () => {
     sec = 0;
     ms = 0;
-    startBtn.setAttribute('disabled', true)
+    isDisabled(startBtn);
     setTimeout( () => { main() },10); // セッティング分のサービスカウント
   })
 };
@@ -342,7 +353,7 @@ const clickStartBtn = () => {
 // 数字順にクリックした時に要素をDisabledに
 const main = () => {
   const gameField = document.getElementById('gameField');
-  const resetBtn = document.getElementById('resetBtn')
+  const restartBtn = document.getElementById('restartBtn')
   const cells_ele = document.querySelectorAll('#gameField > .cell');
   let cells = Array.prototype.slice.call(cells_ele);
 
@@ -362,14 +373,13 @@ const main = () => {
         // n++;
         calcPoint(amountToAdd); // 加点
       }
-      // お手つきは減点！
       else {
-        calcPoint(amountToDeduct);
+        calcPoint(amountToDeduct); // お手つきは減点！
       }
       // 終了
       if ( countDown.length == conditionToGameClear ) {
         clearInterval(stopWatch);
-        resetBtn.removeAttribute('disabled');
+        removeDisabled(restartBtn);
         changeState('post');
         endCommentSelect(Game.point)
         pushTimeAndPoint()
@@ -377,7 +387,7 @@ const main = () => {
     }
   })
   reset();
-}
+};
 
 // 消えるモーション
 const banishAnimation = (target) => {
@@ -410,7 +420,7 @@ const banishAnimation = (target) => {
           iterations: 1
         });
         target.style.opacity = 1;
-      target.setAttribute('disabled', true);
+      isDisabled(target);
       resolve();
       },450)
     })
@@ -419,13 +429,15 @@ const banishAnimation = (target) => {
 
 
 const reset = () => {
-  const startBtn = document.getElementById('startBtn');
-  const resetBtn = document.getElementById('resetBtn');
-  const gameField = document.getElementById('gameField');
-  const endComment = document.getElementById('endComment');
-  const cells_ele = gameField.querySelectorAll('.cell');
-  const cells = Array.prototype.slice.call(cells_ele);
-  resetBtn.onclick = () => {
+  const
+      startBtn = document.getElementById('startBtn'),
+      restartBtn = document.getElementById('restartBtn'),
+      gameField = document.getElementById('gameField'),
+      endComment = document.getElementById('endComment'),
+      cells_ele = gameField.querySelectorAll('.cell'),
+      cells = Array.prototype.slice.call(cells_ele);
+
+  restartBtn.onclick = () => {
     Game.point = 0;
     gamePoint.innerHTML = Game.point;
     sec = 0;
@@ -433,16 +445,12 @@ const reset = () => {
     timer.innerHTML = '00:00';
 
     changeState('pre');
-    startBtn.removeAttribute('disabled');
-    resetBtn.setAttribute('disabled',true);
+    removeDisabled(startBtn);
+    isDisabled(restartBtn);
+
     cells.forEach((cell) => {
-      cell.removeAttribute('disabled');
+      removeDisabled(cell);
     });
 
   };
 };
-
-
-
-
-
