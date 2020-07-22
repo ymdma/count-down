@@ -133,7 +133,7 @@ const adjustWindow = () => {
 
 };
 
-
+// フィッシャー・イェーツのアルゴリズム
 const randomize = () => {
   numbers = data.concat();
 
