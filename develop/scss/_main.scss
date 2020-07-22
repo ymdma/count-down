@@ -87,15 +87,6 @@
       display: none;
     }
 
-    // &__btn {
-      // }
-      // &:hover{
-        // animation-name: StartBtn;
-        // animation-duration: .7s;
-        // animation-iteration-count: 1;
-        // animation-fill-mode: forwards;
-      // }
-    // }
   }
 
 
@@ -205,11 +196,12 @@
     width: 100vw;
     height: 100vw;
     margin: 5rem 0 0 0; // ここを機種ごとに細かく区切りたい。テストできれば...！（5remでiphone8ピッタリ）
+    font-size: 22px; // = .cell 1em
   }
   // タブレット
   @include tb {
     margin: 50px auto;
-    font-size: 20px;
+    font-size: 1.375rem; // = .cell 1em
   }
 
   &[state="pre"] {
@@ -228,7 +220,7 @@
     @include with-border(
       $width: 2px
       );
-    // font-size: 1em;
+    font-size: 1em; // 親に依存,sp固定 tb=< resp
     font-weight:600;
     line-height: 20px;
     text-align: center;
@@ -238,11 +230,9 @@
     @include sp {
       width: calc(100vw / 5);
       height: calc(100vw / 5);
-      font-size: 22px;
     }
-    @include tb {
-      font-size: 1.375rem;
-    }
+    // @include tb {
+    // }
 
     &:hover {
       background:#ffd45e;

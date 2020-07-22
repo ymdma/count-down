@@ -16,6 +16,7 @@ let ms = 0;
 let sec = 0;
 let stopWatch;
 
+
 // *******************
 // **** Functions ****
 // *******************
@@ -189,19 +190,20 @@ const forResize = () => {
 const randomize = () => {
   numbers = data.concat();
 
-  for(var i = numbers.length - 1; i > 0; i--){
+  for ( var i = numbers.length - 1; i > 0; i-- ) {
     var j = Math.floor(Math.random() * (i + 1));
     var tmp = numbers[i];
     numbers[i] = numbers[j];
     numbers[j] = tmp;
   }
+
 };
 
 
 // ほぼデバッグ用
 let state = "pre"
 
-// 今回はメンテナンス性を考えてこの方法で切り替えを実装
+// 今回はメンテナンス性を考えてこの方法で切り替えを実装 => もっとシンプルにできるはず..！
 // state属性の切り替え => changeState('play')
 const changeState = (str) => {
   const // （入れ替え要素リスト）
@@ -274,8 +276,8 @@ const endCommentSelect = (gameScore) => {
     step4UpMessage = '才能がないかもしれない！',
     elseMessage    = '速さよりミスを無くそう';
 
-  // score() >> 設定スコアの計算/ 引数: ミスした回数
-  function score(miss) {
+    // score() >> 設定スコアの計算/ 引数: ミスした回数
+    function score(miss) {
     return fullScore + amountToDeduct * miss };
 
   pushComment = comment => endComment.children[1].innerHTML = comment;
@@ -338,7 +340,6 @@ const countUp = () => {
 // ストップウォッチスタート
 countStart = () =>  stopWatch = setInterval(countUp,10);
 
-
 //スタートボタン押した時にカウント始める。
 const clickStartBtn = () => {
   const startBtn = document.getElementById('startBtn');
@@ -397,7 +398,7 @@ const banishAnimation = (target) => {
       target.animate( {
         background: ['#ffd45e', '#ffd45e'],
         opacity: ['1', '0'],
-        fontSize: ['100%', '110%']
+        fontSize: ['1em', '1.2em']
       }
       , {
         duration: 250,
