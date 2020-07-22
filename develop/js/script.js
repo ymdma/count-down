@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setNumbers();
   clickStartBtn();
   slider();
-  widthJS();
-  forResize();
+  adjustWindow();
+  whenResize();
   // changeState("pre"); // デバッグ用
   // endCommentSelect('800'); // デバッグ用
 });
@@ -56,13 +56,24 @@ const slider = () => {
 
 fontChange = size => document.documentElement.style.fontSize = size;
 
-// リロード時の表示調整
-                  // 処理=>遅い コード=>汚い 記述が非効率的 なので改善する
-const widthJS = () => {
-  const slider = document.getElementById('rangeSlider');
-  let width = document.body.clientWidth;
-  let height = document.body.clientHeight;
 
+// game-field 表示調整・基準（jsによるレスポンシブ）
+
+let width;
+let height;
+
+const whenResize = () => {
+  window.addEventListener("resize",() =>
+    setTimeout(adjustWindow, 300)
+  )
+};
+
+// ウィンドウリサイズ時の表示サイズ調整
+const adjustWindow = () => {
+  // console.log("!")
+  const slider = document.getElementById('rangeSlider');
+  width = document.body.clientWidth;
+  height = document.body.clientHeight;
   if ( 420 > height ) {
     slider.setAttribute('value', '0');
     fontChange(`${12+ slider.value * 2}px`);
@@ -111,79 +122,15 @@ const widthJS = () => {
     slider.setAttribute('value', '8');
     fontChange(`${12+ slider.value * 2}px`);
   }
+  else if ( 850 > height ) {
+    slider.setAttribute('value', '10');
+    fontChange(`${12+ slider.value * 2}px`);
+  }
   else {
     slider.setAttribute('value', '10');
     fontChange(`${12+ slider.value * 2}px`);
   }
-};
 
-
-// ウィンドウリサイズ時の表示サイズ調整
-const forResize = () => {
-  const slider = document.getElementById('rangeSlider');
-  let width = document.body.clientWidth;
-  let height = document.body.clientHeight;
-
-  window.addEventListener("resize", () => {
-    width = document.body.clientWidth;
-    height = document.body.clientHeight;
-    if ( 420 > height ) {
-      slider.setAttribute('value', '0');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 450 > height ) {
-      slider.setAttribute('value', '1.3');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 480 > height ) {
-      slider.setAttribute('value', '1.3');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 500 > height ) {
-      slider.setAttribute('value', '2');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 530 > height ) {
-      slider.setAttribute('value', '2.5');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 580 > height ) {
-      slider.setAttribute('value', '3');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 600 > height ) {
-      slider.setAttribute('value', '4');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 650 > height ) {
-      slider.setAttribute('value', '4.9');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( width < 540 && height > 700 ) { // 横の制限
-      slider.setAttribute('value', '6.8');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 700 > height ) {
-      slider.setAttribute('value', '5.5');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 750 > height ) {
-      slider.setAttribute('value', '6.8');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 800 > height ) {
-      slider.setAttribute('value', '8');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else if ( 850 > height ) {
-      slider.setAttribute('value', '10');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-    else {
-      slider.setAttribute('value', '10');
-      fontChange(`${12+ slider.value * 2}px`);
-    }
-  })
 };
 
 
