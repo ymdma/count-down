@@ -56,12 +56,6 @@ $image_path: $root + $image;
   background-position: bottom center;
 }
 
-// @mixin backgroundImageIcon($url) {
-//   background-image: url($image_path + $url);
-//   background-size: 25px;
-//   background-repeat: no-repeat;
-//   background-position: center center;
-// }
 
 @mixin line-height($size) {
   $bairitu: $baseFontSize / 16 ; // 基準のpx数が16の何倍か

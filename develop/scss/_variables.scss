@@ -2,7 +2,8 @@
 $baseWhiteColor: #fafafa;
 $baseBlackColor: #333333;
 $baseGrayColor: #777777;
-$baseBlueColor: #5e9bc1;
+$baseBlueColor: #0087ff;
+// $baseBlueColor: #0066ff;
 $basePinkColor: #ffc0cb;
 $baseGreenColor: #08794a;
 $gameTableColor: #08794a;
@@ -18,8 +19,8 @@ $sp: 480px;
 $tb: 768px;
 $pc: 1280px;
 
-$baseFontSize: 16;
-$rootFontSize: percentage( $baseFontSize / 16 );
+$baseFontSize: 16; // * num only!!
+$rootFontSize: percentage( $baseFontSize / 16 ); // html
 
 // スマホ
 @mixin sp {
