@@ -17,7 +17,7 @@
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
     "globule": "^1.2.1",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "internal-ip": "^5.0.0",
     "intersection-observer": "^0.7.0",
@@ -34,7 +34,7 @@
     "terser-webpack-plugin": "^2.3.2",
     "url-loader": "^2.1.0",
     "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.8.0",
     "what-input": "^5.2.6"
   },
